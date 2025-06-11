@@ -1,0 +1,11 @@
+apiVersion: v2
+name: insightops
+description: Main Helm chart for deploying the InsightOps platform
+type: application
+version: 0.1.0
+appVersion: "1.0"
+
+dependencies:
+  - name: observability
+    version: "0.1.0"
+    repository: "file://charts/observability"

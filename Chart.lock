@@ -1,0 +1,6 @@
+dependencies:
+- name: observability
+  repository: file://charts/observability
+  version: 0.1.0
+digest: sha256:05a7b6d0c5ed6207208f68ccb0d3da40b492acb88fe0786ef6a89241c971e7b2
+generated: "2025-06-11T03:18:27.3179383-04:00"
