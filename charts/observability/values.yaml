@@ -1,0 +1,15 @@
+prometheus:
+  alertmanager:
+    enabled: false
+  server:
+    enabled: true
+    persistentVolume:
+      enabled: false
+
+loki:
+  persistence:
+    enabled: false
+  config:
+    table_manager:
+      retention_deletes_enabled: true
+      retention_period: 168h
