@@ -13,3 +13,19 @@ loki:
     table_manager:
       retention_deletes_enabled: true
       retention_period: 168h
+
+promtail:
+  enabled: true
+  config:
+    clients:
+      - url: http://loki:3100/loki/api/v1/push
+    snippets:
+      pipeline_stages:
+        - cri: {}
+      extraScrapeConfigs:
+        - job_name: kubernetes-pods
+          static_configs:
+            - targets: ['localhost']
+              labels:
+                job: varlogs
+                __path__: /var/log/pods/*/*/*.log
