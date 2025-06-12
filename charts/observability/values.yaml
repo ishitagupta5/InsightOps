@@ -4,15 +4,28 @@ prometheus:
   server:
     enabled: true
     persistentVolume:
-      enabled: false
+      enabled: false      
+  kubeStateMetrics:
+    enabled: true
+  nodeExporter:
+    enabled: true
+  server:
+    retention: "7d"
+    resources:
+      limits:
+        memory: 1Gi
+        cpu: 500m
+      requests:
+        memory: 512Mi
+        cpu: 250m
 
 loki:
   persistence:
     enabled: false
-  config:
-    table_manager:
-      retention_deletes_enabled: true
-      retention_period: 168h
+  # config: |
+  table_manager:
+    retention_deletes_enabled: true
+    retention_period: 168h
 
 promtail:
   enabled: true
@@ -22,7 +35,7 @@ promtail:
     snippets:
       pipeline_stages:
         - cri: {}
-      extraScrapeConfigs:
+      extraScrapeConfigs: |
         - job_name: kubernetes-pods
           static_configs:
             - targets: ['localhost']
