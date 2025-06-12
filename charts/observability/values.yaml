@@ -18,6 +18,11 @@ prometheus:
       requests:
         memory: 512Mi
         cpu: 250m
+  prometheusSpec:
+    podMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelector:
+      matchLabels:
+        team: insightops
 
 loki:
   persistence:

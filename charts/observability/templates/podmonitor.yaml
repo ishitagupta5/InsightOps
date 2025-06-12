@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: ai-ml-podmonitor
+  labels:
+    team: insightops 
+spec:
+  selector:
+    matchLabels:
+      app: ai-ml      
+  namespaceSelector:
+    any: true
+  podMetricsEndpoints:
+    - port: metrics
+      path: /metrics
+      interval: 15s
