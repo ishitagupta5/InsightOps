@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ai-ml-demo
+  namespace: default
+  labels:
+    app: ai-ml
+spec:
+  containers:
+    - name: metrics-demo
+      image: nginx
+      ports:
+        - name: metrics
+          containerPort: 80
